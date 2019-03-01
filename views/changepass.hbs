@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang=en>
+	<head>
+		<title>Reset Password</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,500italic' rel='stylesheet' type='text/css'>
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+		<style type="text/css">
+		body {
+
+		}
+
+		*{
+		    font-family: 'Raleway', sans-serif;
+		    color : #FFF;
+
+		}
+
+
+		div h3 span{
+		     color : #FFF;
+		     font-size:14px;
+		}
+
+		div span {
+		     font-weight: 200;
+		}
+
+		h1{
+		     font-weight: 200;
+		     color: #fff;
+		}
+		.login_box {
+			background: #252d3a;
+
+			width: 35%;
+			/* height: 70%; */
+			position: absolute;
+			top: 7%;
+			left: 32.5%;
+			-webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.54);
+			-moz-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.54);
+			box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.54);
+		  margin-bottom: 20px;
+		}
+
+		.follow{
+		    background-color:#FC563B;
+		    height: 80px;
+		    cursor:pointer;
+		}
+
+		.follow:hover {
+		    background-color:#F22F26;
+		    height: 80px;
+		    cursor:pointer;
+		}
+
+		.login_control{
+		    background-color:#FFF;
+		    padding:10px;
+
+		}
+
+		.control {
+		    color:#000;
+		    margin:10px;
+		}
+
+		.label {
+			color: #000;
+			font-size: 16px;
+			font-weight: 500;
+			margin-top: 20px !important;
+			width: 100%;
+			float: left;
+			text-align: left;
+		}
+
+		.form-control {
+			color: #000000 !important;
+			font-size: 15px;
+			border: none;
+			/* padding: 25px; */
+			padding-left: 10px;
+			border-bottom: 1px solid #CCC;
+			margin-bottom: 10px;
+			outline: none;
+			-webkit-box-shadow: none !important;
+			-moz-box-shadow: none !important;
+			box-shadow: none !important;
+			background: #fff !important;
+			line-height: 30px !important;
+			width: 100%;
+			float: left;
+			height: 40px;
+		}
+
+		.form-control:focus{
+		    border-radius: 0px;
+		    border-bottom: 1px solid #5fbeaa ;
+		    margin-bottom: 10px;
+		    outline: none;
+		    -webkit-box-shadow: none !important;
+		    -moz-box-shadow: none !important;
+		    box-shadow: none !important;
+		}
+		.btn-orange {
+			background-color: #5fbeaa;
+			border-radius: 0px;
+			margin: 5px;
+			padding: 5px;
+			width: 150px;
+			font-size: 20px;
+			font-weight: inherit;
+			margin-top: 20px;
+		}
+
+		.btn-orange:hover {
+		    background-color: #37a48d;
+		    border-radius: 0px;
+		    padding: 5px;
+		    width: 150px;
+		    font-size: 20px;
+		    font-weight: inherit;
+		    color:#FFF !important;
+		}
+
+		.line{
+		    border-bottom : 2px solid #F32D27;
+		}
+
+		.outter {
+			padding: 0px;
+			border: 1px solid rgba(255, 255, 255, 0.29);
+			border-radius: 50%;
+			width: 200px;
+			height: 200px;
+			margin-top: 20px;
+		}
+
+		div#error-msg h3 { color:red; font-size:20px; }
+		div#error-msg span { color:#000; width:100%; text-align:center; display:block; }
+		div#success-msg h3 { color:green; font-size:20px; }
+		div#success-msg span { color:#000; width:100%; text-align:center; display:block; }
+		form#changepass-form h1 {
+    color:#720000;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    padding-bottom:5px;
+    border-bottom: 1px dashed #ccc;
+}
+.alert>p, .alert>ul {
+    margin-bottom: 0;
+    color: red;
+}
+
+
+@media (max-width: 800px) {
+
+.login_box { width:95%; left:0; right:0; margin:auto; }
+
+}
+
+
+		</style>
+
+
+
+
+
+	</head>
+
+	<body>
+
+
+		<div class="container">
+		    <div class="row login_box">
+		        <div class="col-md-12 col-xs-12 login_control">
+
+
+
+
+	  <div class="create-new-password-bg">
+        <div id="success-msg" style='display: none; text-align: center;'>
+          <h3>Successfully Changed password for {{ handle }},
+          You can now use the new password to Login</h3>
+        </div>
+        <div id="error-msg" style='display: none; text-align: center;'>
+          <h3>Failed to Change password for {{handle}}</h3>
+          Reason: <span id='error-reason'></span>
+        </div>
+        <form name="changepass-form" id="changepass-form">
+          <h1>Arthacoin Change Password Form</h1>
+          <div class="alert alert-danger" id="alert" style="display: none;">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <p>Passwords Must Match!</p>
+          </div>
+
+					<div class="control">
+           <input class="form-control" type="hidden" name="token" id="token" placeholder="Password" value="{{ token }}">
+				 </div>
+
+				 <div class="control">
+           <input class="form-control" type="text" disabled readonly id="handle" placeholder="Email" value="{{ handle }}">
+				 </div>
+
+				 <div class="control">
+           <input class="form-control" type="password" name="newpass" id="newpass" placeholder="Enter New Password">
+				 </div>
+
+				 <div class="control">
+           <input class="form-control" type="password" name="newpass-verify" id="newpass-verify" placeholder="Confirm New Password">
+				 </div>
+
+				 <div class="control">
+           <input class="btn btn-primary" type="submit" name="submit" id="submit" value="Submit">
+				 </div>
+
+        </form>
+	  </div>
+
+
+
+
+				</div>
+			</div>
+</div>
+
+
+
+<script>
+  $(document).ready(function () {
+
+    $("#changepass-form").submit(function (e) {
+      e.preventDefault();
+      if ($("#newpass").val() != $("#newpass-verify").val()) {
+        $("#alert").slideDown();
+        $("#newpass").focus();
+        return false;
+      }
+      $.ajax({
+        method: "POST",
+        type: "POST",
+        url: "/changepass",
+        data: {
+          token: $("#token").val(),
+          newpass: $("#newpass").val()
+        },
+        success: function (resp) {
+          console.log(resp);
+          if (resp.error) {
+            $("#changepass-form").hide();
+            $("#error-reason").html(resp.message);
+            $("#error-msg").show();
+          }  else {
+            $("#changepass-form").hide();
+            $("#success-msg").show();
+          }
+        }
+      })
+    })
+
+  })
+</script>
